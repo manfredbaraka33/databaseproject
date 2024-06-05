@@ -1,0 +1,51 @@
+{% extends 'appointment/patientDbBase.html' %}
+{%load static%}
+{%block content%}
+
+
+
+<div class="container mt-4">
+    <h1>Edit Appointment</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="appointment_date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="appointment_date" name="appointment_date" value="{{ appointment.appointment_date }}">
+        </div>
+        <div class="mb-3">
+            <label for="appointment_time" class="form-label">Time</label>
+            <input type="time" class="form-control" id="appointment_time" name="appointment_time" value="{{ appointment.appointment_time }}">
+        </div>
+
+        <div class="mb-3">
+            <!-- <label for="doctor" class="form-label">Doctor</label>
+            <select class="form-control" id="doctor" name="doctor">
+                <option selected disabled>Select the doctor</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.first_name }} {{ doctor.last_name }} - {{ doctor.specialization }}</option>
+                {% endfor %}
+            </select> -->
+            <label for="doctor" class="form-label">Doctor</label>
+            <select class="form-control" id="doctor" name="doctor">
+                <option selected disabled>Select the doctor</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}" {% if doctor.id == appointment.doctor.id %}selected{% endif %}>{{ doctor.first_name }} {{ doctor.last_name }} - {{ doctor.specialization }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <input type="text" class="form-control" id="notes" name="notes" value="{{ appointment.notes }}">
+        </div>
+        <!-- <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <input type="text" class="form-control" id="status" name="status" value="{{ appointment.status }}">
+        </div> -->
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,15 @@
+{% extends 'appointment/patientDbBase.html' %}
+{%load static%}
+{%block content%}
+
+<div class="container mt-4">
+    <h1>Delete Appointment</h1>
+    <p>Are you sure you want to delete this appointment?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Cancel</button>
+        <a href="{% url 'appointment:appointments' %}" class="btn btn-secondary">Not Now</a>
+    </form>
+</div>
+
+{%endblock%}

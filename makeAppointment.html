@@ -1,0 +1,36 @@
+{% extends 'appointment/patientDbBase.html' %}
+{%load static%}
+{%block content%}
+
+<div class="bg-light p-4 ">
+    <form action="{% url 'appointment:makeAppointment' %}" method="post" class="border rounded p-3" style="background-color: white;box-shadow:3px 3px 3px black">
+        {% csrf_token %}
+        <div class="mb-3">
+            <h4 class="text-primary ">Make an appointment</h4>
+            <label for="doctor" class="form-label">Doctor</label>
+            <select class="form-control" id="doctor" name="doctor">
+                <option selected disabled>Select the doctor</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.first_name }} {{ doctor.last_name }} - {{ doctor.specialization }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="appointment_date" class="form-label">Appointment Date</label>
+            <input type="date" class="form-control" id="appointment_date" name="appointment_date">
+        </div>
+        <div class="mb-3">
+            <label for="appointment_time" class="form-label">Appointment Time</label>
+            <input type="time" class="form-control" id="appointment_time" name="appointment_time">
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea class="form-control" id="notes" name="notes"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Make Appointment</button>
+    </form>
+
+</div>
+
+
+{%endblock%}

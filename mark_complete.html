@@ -1,0 +1,15 @@
+{% extends 'appointment/doctorDbBase.html' %}
+{%load static%}
+{%block content%}
+
+<div class="container mt-4">
+    <h1>Mark Appointment completed</h1>
+    <p>Are you sure you want to mark this appointment completed?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning">Yes, Mark complete</button>
+        <a href="{% url 'appointment:appointments2' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{%endblock%}

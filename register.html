@@ -1,0 +1,91 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Registration</title>
+    <style>
+       #formreg{
+        min-width: 400px;
+        
+        box-shadow: 3px 3px 3px black;
+       } 
+       .col{
+        min-width: 300px;
+       }  
+       .footer {
+        background-color: #343a40; /* Set footer background color */
+        color: white; /* Set footer text color */
+    }
+    </style>
+</head>
+<body>
+    
+    <div id="formreg" class="container bg-light mt-5 p-3 border rounded">
+        <form action="{% url 'appointment:register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="border-bottom mb-4"><H3 class="text-primary">PAMS Registration</H3></div>
+            {% if messages %}
+            <div class="alert alert-info" role="alert">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+           <div class="row">
+            <div class="col">
+             <input type="text" class="form-control" placeholder="First name" name="fname" required>
+            </div>
+            <div class="col">
+             <input type="text" class="form-control" placeholder="Last name" name="lname" required>
+            </div>
+            <div class="col">
+             <input type="email" class="form-control" placeholder="Email address" name="email" required>
+            </div>
+           </div>
+           <div class="row my-5">
+            <div class="col">
+                <input type="tel" class="form-control" placeholder="Phone number eg. 0735562178" maxlength="10" name="phone" required>
+            </div>
+            <div class="col">
+             <input type="text" class="form-control" name="address" placeholder="Physical address" required >
+            </div>
+            <div class="col">
+                <label>Date of Birth:<input type="date" class="form-control" placeholder="Date of Birth" name="db" required></label>
+            </div>
+           </div>
+           <div class="row">
+            
+            <div class="col">
+              <input type="password" class="form-control" placeholder="set password" name="password" required>
+            </div>
+
+           <div class="col">
+              <input type="password" class="form-control" placeholder="Confirm password" name="password2" required>
+            </div>
+            <div class="col">
+                
+            <label for="image">upload profile picture<input type="file" id="image-input" accept="image/*" name="image" required></label>
+            </div>
+           </div>
+           <button type="submit" class="btn btn-info mt-3 text-light">Register</button> 
+           <br>
+           <div class="border-top mt-4">
+            <span class="mt-3" style="font-size: small;">Already have an account? <a href="{% url 'appointment:login' %}">Login now!</a> | <a href="{% url 'appointment:index' %}">Home</a></span>
+           </div>
+        </form>
+    </div>
+
+    <footer class="footer mt-auto py-3 fixed-bottom">
+        <div class="container text-center">
+            <span>&copy; 2024
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>

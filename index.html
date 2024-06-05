@@ -1,0 +1,159 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Appointment Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Set background color */
+        }
+        .navbar {
+            background-color: #007bff; /* Set navbar background color */
+            color: white; /* Set navbar text color */
+        }
+        .jumbotron {
+            background-color: #007bff; /* Set jumbotron background color */
+            color: white; /* Set jumbotron text color */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Set button background color */
+            border-color: #007bff; /* Set button border color */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Set button hover background color */
+            border-color: #0056b3; /* Set button hover border color */
+        }
+        .footer {
+            background-color: #343a40; /* Set footer background color */
+            color: white; /* Set footer text color */
+        }
+        a{
+            font-weight: bolder;
+            font-size: large;
+        }
+        .cxc:hover{
+            background-color: white;
+            color: blue !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">PAMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="{% url 'appointment:intLog' %}"><b class="btn cxc border-bottom" style="color: white;">LOG IN</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="{% url 'appointment:register' %}"><b class="btn cxc border-bottom" style="color: white;">REGISTER</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron text-center p-3 mt-4 mb-3">
+        <div class="container mt-4 p-4">
+            <h1 class="display-4">Welcome to the Patient Appointment Management System</h1>
+            <p class="lead">Easily manage your appointments online with PAMS.</p>
+            <hr class="my-4">
+            <p>Book appointments with your healthcare providers, view your medical history, and stay organized with our intuitive platform.</p>
+            <a class="btn btn-primary btn-lg" href="#learn-more" role="button" data-bs-toggle="scroll" data-bs-target="#learn-more" data-bs-offset="100">Learn more</a>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col p-3 border" style="background-color: white;">
+                <h2>About PAMS</h2>
+                <p>PAMS (Patient Appointment Management System) is a user-friendly platform designed to streamline the appointment scheduling process for patients and healthcare providers. Our goal is to provide a seamless experience for both parties, allowing patients to easily book appointments online and healthcare providers to efficiently manage their schedules.</p>
+                <p>With PAMS, you can view available appointment slots, select a convenient time, and receive instant confirmation. Say goodbye to long wait times and phone calls – managing your appointments has never been easier!</p>
+            </div>
+            <div class="col p-3 border mx-1" style="background-color: white;">
+                <h2>Why Choose Us?</h2>
+                <p>Choosing PAMS means choosing convenience, reliability, and efficiency. Here are some reasons why you should consider using our platform:</p>
+                <ul>
+                    <li>Effortless Appointment Booking: Book appointments online anytime, anywhere.</li>
+                    <li>Secure and Confidential: Your personal information is kept safe and confidential.</li>
+                    <li>User-Friendly Interface: Our platform is easy to navigate, making it simple for patients and healthcare providers alike.</li>
+                    <li>Instant Confirmation: Receive instant confirmation of your appointments, eliminating any uncertainty.</li>
+                    <li>24/7 Accessibility: Access your account and manage appointments 24/7 from any device.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="learn-more" class="container">
+        <h2>Discover the Benefits of PAMS</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/appn1.jpg' %}" class="img-fluid" alt="Efficient Appointment Scheduling">
+                <h5>Efficient Appointment Scheduling</h5>
+                <p>Book appointments with ease and flexibility, anytime, anywhere.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/appn3.jpg' %}" class="img-fluid" alt="Personalized Experience">
+                <h5>Personalized Experience</h5>
+                <p>Customize your appointment preferences and healthcare provider choices for a tailored experience.</p>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'images/appn2.jpg' %}" class="img-fluid" alt="Comprehensive Medical History">
+            <h5>Comprehensive Medical History</h5>
+            <p>Access your complete medical records, prescriptions, and appointment history at your fingertips.</p>
+        </div>
+        
+        <div class="col-md-6">
+            <img src="{% static 'images/appn2.jpg' %}" class="img-fluid" alt="Comprehensive Medical History">
+            <h5>Comprehensive Medical History</h5>
+            <p>Access your complete medical records, prescriptions, and appointment history at your fingertips.</p>
+        </div>
+    </div>
+    <p class="mt-4 mx-3">Ready to experience the convenience of PAMS? Sign up today and start managing your appointments effortlessly!</p>
+  
+        </div>
+          </div>
+    
+    <section id="contacts" class="container mt-5 bg-ligth">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns, feel free to reach out to us.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Our Location</h3>
+                <p>College Of Health sciences(UDOM)<br>Dodoma<br>Tanzania</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Contact Information</h3>
+                <p>Email: pams@example.com<br>Phone: +07534567890<br>Fax: +1234567890</p>
+            </div>
+        </div>
+    </section>
+    <br> <br>
+
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span>&copy; 2024
+            </span>
+        </div>
+    </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+</html>

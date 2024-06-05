@@ -1,0 +1,222 @@
+{% extends 'appointment/patientDbBase.html' %}
+{%load static%}
+{%block content%}
+
+<div class="bg-light p-3">
+
+<div class="row">
+    <div style="background-color: white;box-shadow:3px 3px 3px black;" class="col p-3 border rounded cts my-1">
+       <center>
+        <h3>Scheduled</h3>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+          <h1 class="bg-light p-3 border rounded text-primary">{{scheduled}}</h1>
+        </button>
+        
+       </center>
+    </div>
+    <div style="background-color: white;box-shadow:3px 3px 3px black;" class="col p-3 border rounded mx-1 cts my-1">
+      <center>
+        <h3>Cancelled</h3>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+          <h1 class="bg-light p-3 border rounded text-primary">{{cancelled}}</h1>
+        </button>
+        
+      </center>
+    </div>
+    <div style="background-color: white;box-shadow:3px 3px 3px black;" class="col p-3 border rounded cts my-1">
+        <center>
+            <h3>Completed</h3>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">
+              <h1 class="bg-light p-3 border rounded text-primary">{{completed}}</h1>
+            </button>
+            
+        </center>
+    </div>
+</div>
+
+</div> 
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Scheduled Appointments</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="col table-responsive bg-light border rounded" style="max-height:300px; min-width:500px;box-shadow:3px 3px 3px black;">
+              <!-- <h3>Appointments</h3> -->
+              <table class="table table-border">
+                  <thead style="position: sticky; top:0;" class="table-success">
+                      <tr>
+                          <th>S/N</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Patient</th>
+                          <th>Notes</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for appointment in listscheduled %}
+                          <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ appointment.appointment_date }}</td>
+                              <td>{{ appointment.appointment_time }}</td>
+                              <td>{{ appointment.doctor }}</td>
+                              <td>{{ appointment.notes }}</td>
+                          </tr>
+                      {% empty %}
+                          <tr>
+                              <td colspan="5">No appointments scheduled.</td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+ 
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Cancelled Appointments</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="col table-responsive bg-light border rounded" style="max-height:300px; min-width:500px;box-shadow:3px 3px 3px black;">
+              <!-- <h3>Appointments</h3> -->
+              <table class="table table-border">
+                  <thead style="position: sticky; top:0;" class="table-success">
+                      <tr>
+                          <th>S/N</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Patient</th>
+                          <th>Notes</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for appointment in listcancelled %}
+                          <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ appointment.appointment_date }}</td>
+                              <td>{{ appointment.appointment_time }}</td>
+                              <td>{{ appointment.patient }}</td>
+                              <td>{{ appointment.notes }}</td>
+                          </tr>
+                      {% empty %}
+                          <tr>
+                              <td colspan="5">No appointments cancelled.</td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+ 
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal3">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Completed Appointments</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="col table-responsive bg-light border rounded" style="max-height:300px; min-width:500px;box-shadow:3px 3px 3px black;">
+              <!-- <h3>Appointments</h3> -->
+              <table class="table table-border">
+                  <thead style="position: sticky; top:0;" class="table-success">
+                      <tr>
+                          <th>S/N</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Patient</th>
+                          <th>Notes</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for appointment in listcompleted %}
+                          <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ appointment.appointment_date }}</td>
+                              <td>{{ appointment.appointment_time }}</td>
+                              <td>{{ appointment.patient }}</td>
+                              <td>{{ appointment.notes }}</td>
+                          </tr>
+                      {% empty %}
+                          <tr>
+                              <td colspan="5">No appointments completed.</td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+ 
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{%endblock%}
+
